@@ -1,0 +1,76 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User/Admin Login</title>
+  <link rel="stylesheet" href="css/login-styles.css">
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <div class="role-selector">
+      <button id="userBtn" class="active" onclick="selectRole('user')">User</button>
+      <button id="adminBtn" onclick="selectRole('admin')">Admin</button>
+    </div>
+    <input type="text" id="username" placeholder="Username" value="user">
+    <input type="password" id="password" placeholder="Password">
+    <button type="submit" onclick="login()">Sign In</button>
+    <p id="message"></p>
+    <div class="signup-link">
+      Don't have an account? <a onclick="showSignup()">Sign up</a>
+    </div>
+  </div>
+  <div id="successPopup" class="popup">Logged in successfully! ✅</div>
+  <div id="signupPopup" class="popup">
+    User not found! Would you like to <a href="html/signup.html" style="color:white;">sign up</a>?
+  </div>
+
+  <script>
+    function selectRole(role) {
+      document.getElementById('userBtn').classList.remove('active');
+      document.getElementById('adminBtn').classList.remove('active');
+      document.getElementById(role + 'Btn').classList.add('active');
+      document.getElementById('username').value = role;
+    }
+
+    async function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const result = await response.json();
+        if (response.ok) {
+    document.getElementById('successPopup').style.display = 'block';
+    setTimeout(() => {
+        document.getElementById('successPopup').style.display = 'none';
+        // Fixed redirect paths
+        if (result.isAdmin) {
+            window.location.href = '/add';  // Changed from 'add.html'
+        } else {
+            window.location.href = '/view'; // Changed from 'view.html'
+        }
+    }, 1500);
+}
+ else {
+          if (result.code === 2) {
+            document.getElementById('signupPopup').style.display = 'block';
+          } else {
+            document.getElementById('message').textContent = result.message;
+          }
+        }
+      } catch (error) {
+        document.getElementById('message').textContent = "Connection error. Please try again.";
+      }
+    }
+
+    function showSignup() {
+      window.location.href = 'html/signup.html';
+    }
+  </script>
+</body>
+</html>

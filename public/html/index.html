@@ -1,0 +1,128 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Prescription System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Smart Prescription System</h1>
+    </div>
+
+    <div class="form-container">
+        <form id="prescriptionForm">
+            <div class="grid">
+                <div>
+                    <label>Patient Name</label>
+                    <input type="text" id="patientName" placeholder="Name" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+            </div>
+
+            <div id="medicineContainer">
+                <div class="medicine-entry">
+                    <h3>Medicine 1</h3>
+                    <div class="grid">
+                        <div>
+                            <input type="text" placeholder="Medicine Name" required class="medName">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Dosage (e.g., 500mg)" required class="dosage">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Schedule (e.g., 3x daily)" required class="schedule">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" onclick="addMedicineField()">Add Medicine</button>
+                <button type="submit">Save Prescription</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <!-- <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="prescriptionModal">
+        <div class="modal-header">
+            <h2>✅ Prescription Added Successfully!</h2>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Prescription System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Smart Prescription System</h1>
+    </div>
+
+    <div class="form-container">
+        <form id="prescriptionForm">
+            <div class="grid">
+                <div>
+                    <label>Patient Name</label>
+                    <input type="text" id="patientName" placeholder="Name" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+            </div>
+
+            <div id="medicineContainer">
+                <div class="medicine-entry">
+                    <h3>Medicine 1</h3>
+                    <div class="grid">
+                        <div>
+                            <input type="text" placeholder="Medicine Name" required class="medName">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Dosage (e.g., 500mg)" required class="dosage">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Schedule (e.g., 3x daily)" required class="schedule">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" onclick="addMedicineField()">Add Medicine</button>
+                <button type="submit">Save Prescription</button>
+            </div>
+        </form>
+        
+        <!-- NEW: Admin action buttons -->
+        <div class="admin-actions">
+            <button onclick="window.location.href='/view'">View Prescriptions</button>
+            <button onclick="window.location.href='/delete'">Delete Prescriptions</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="prescriptionModal">
+        <div class="modal-header">
+            <h2>✅ Prescription Added Successfully!</h2>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+

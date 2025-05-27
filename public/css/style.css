@@ -1,0 +1,167 @@
+:root {
+    --primary: #13294B;
+    --secondary: #E4D6A7;
+    --accent: #4A6FA5;
+    --background: #F8F5EC;
+    --error: #C44536;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--background);
+    margin: 0;
+    padding: 20px;
+}
+
+.header {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+input, button {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: var(--accent);
+}
+
+.medicine-entry {
+    background: #f9f9f9;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-left: 4px solid var(--secondary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.close-btn {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    padding: 0;
+    width: auto;
+    color: var(--primary);
+}
+
+.prescription-details {
+    padding: 1rem;
+    background: var(--background);
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        width: 95%;
+        padding: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+.admin-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.admin-actions button {
+    background: #4A6FA5;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: auto;
+}
+
+.admin-actions button:hover {
+    background: #3a5a8f;
+}
+
+@media (max-width: 768px) {
+    .admin-actions {
+        flex-direction: column;
+    }
+    .admin-actions button {
+        width: 100%;
+    }
+}

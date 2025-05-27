@@ -1,0 +1,13 @@
+Swaroop D S|2025-05-26 09:10|Dolo;650;Twice a day;2025-12-31|Paracetomol;200;once a day;2025-12-31
+Sandeep H|2025-05-26 10:18|dolo;200;3x;2025-12-31
+Aarav Patel|2025-05-17 08:22|Dolo;650;Twice a day;2025-12-31|Paracetamol;500;once a day;2025-12-31
+Bhavya Sharma|2025-05-19 13:45|Ibuprofen;400;3x a day;2025-12-31
+Chirag Kumar|2025-05-20 11:30|Cetirizine;10;once a day;2025-12-31|Amoxicillin;250;twice a day;2025-12-31
+Deepika Gupta|2025-05-21 09:10|Dolo;650;once a day;2025-12-31|Paracetamol;200;once a day;2025-12-31|Cetirizine;5;once a day;2025-12-31
+Esha Singh|2025-05-22 14:15|Amoxicillin;500;twice a day;2025-12-31
+Farhan Ahmed|2025-05-23 16:20|Ibuprofen;300;3x a day;2025-12-31|Paracetamol;250;once a day;2025-12-31
+Gita Reddy|2025-05-24 10:05|Dolo;200;once a day;2025-12-31
+Harsh Mehta|2025-05-25 12:50|Amoxicillin;250;twice a day;2025-12-31|Cetirizine;10;once a day;2025-12-31
+Ishaan Joshi|2025-05-26 07:30|Paracetamol;500;once a day;2025-12-31|Ibuprofen;400;twice a day;2025-12-31
+JayaNair|2025-05-27 18:40|Dolo;650;once a day;2025-12-31|Paracetamol;200;once a day;2025-12-31|Amoxicillin;250;twice a day;2025-12-31
+Chinminal|2025-05-27 09:37|Citrizine;200;3X daily;2025-12-31

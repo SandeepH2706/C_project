@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="css/login-styles.css">
+</head>
+<body>
+  <div class="auth-box">
+    <h2>Create Account</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="signup()">Sign Up</button>
+    <div class="link-text">
+      Existing user? <a href="/">Login instead</a>
+    </div>
+    <p id="message"></p>
+  </div>
+  <div id="popup" class="popup"></div>
+  <script>
+    async function signup() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      try {
+        const response = await fetch('/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const result = await response.json();
+        const popup = document.getElementById('popup');
+        if (response.ok) {
+          popup.className = 'popup success-popup';
+          popup.textContent = 'Signup successful! Redirecting...';
+          setTimeout(() => window.location.href = '/', 1500);
+        } else {
+          popup.className = 'popup error-popup';
+          popup.textContent = result.message || 'Signup failed';
+        }
+        popup.style.display = 'block';
+        setTimeout(() => popup.style.display = 'none', 3000);
+      } catch (error) {
+        document.getElementById('message').textContent = 'Connection error. Please try again.';
+      }
+    }
+  </script>
+</body>
+</html>
