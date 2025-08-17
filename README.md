@@ -2,6 +2,12 @@
 
 **A Digital Healthcare Solution - Semester 2 C Programming Project**
 
+### 🌐 **[LIVE DEMO ➜ Try It Now!](https://prescription-app-431826166991.us-central1.run.app)**
+
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Available-brightgreen?style=for-the-badge)](https://prescription-app-431826166991.us-central1.run.app)
+[![GitHub](https://img.shields.io/badge/📋%20Source%20Code-GitHub-blue?style=for-the-badge&logo=github)](https://github.com/SandeepH2706/C_project)
+[![Cloud Run](https://img.shields.io/badge/☁️%20Deployed%20on-Google%20Cloud-orange?style=for-the-badge&logo=google-cloud)](https://prescription-app-431826166991.us-central1.run.app)
+
 This is a web-based prescription management system I developed during my second semester as part of my C programming coursework. The project demonstrates practical application of programming concepts learned in class, including file handling, data structures, and user authentication.
 
 ## 🎯 What This Project Does
