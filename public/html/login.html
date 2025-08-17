@@ -4,11 +4,14 @@
 <html>
 <head>
   <title>User/Admin Login</title>
-  <link rel="stylesheet" href="css/login-styles.css">
+  <link rel="stylesheet" href="../css/login-styles.css">
 </head>
 <body>
   <div class="login-box">
     <h2>Login</h2>
+    <div class="demo-info">
+      <button id="demoBtn" onclick="showDemoCredentials()">📋 Demo Credentials</button>
+    </div>
     <div class="role-selector">
       <button id="userBtn" class="active" onclick="selectRole('user')">User</button>
       <button id="adminBtn" onclick="selectRole('admin')">Admin</button>
@@ -23,15 +26,84 @@
   </div>
   <div id="successPopup" class="popup">Logged in successfully! ✅</div>
   <div id="signupPopup" class="popup">
-    User not found! Would you like to <a href="html/signup.html" style="color:white;">sign up</a>?
+    User not found! Would you like to <a href="/signup" style="color:white;">sign up</a>?
   </div>
+  
+  <!-- Demo Credentials Popup -->
+  <div id="demoPopup" class="demo-popup">
+    <div class="demo-content">
+      <span class="close-demo" onclick="closeDemoPopup()">&times;</span>
+      <h3>🎭 Portfolio Demo Credentials</h3>
+      <div class="demo-accounts">
+        <div class="demo-account">
+          <h4>👨‍⚕️ Admin Account</h4>
+          <p><strong>Username:</strong> <span class="credential" onclick="copyToClipboard('admin')">admin</span></p>
+          <p><strong>Password:</strong> <span class="credential" onclick="copyToClipboard('admin123')">admin123</span></p>
+          <small>• Can add, view, and delete all prescriptions</small>
+          <button onclick="fillCredentials('admin', 'admin123')">Use Admin Login</button>
+        </div>
+        <div class="demo-account">
+          <h4>👤 Regular User Account</h4>
+          <p><strong>Username:</strong> <span class="credential" onclick="copyToClipboard('demo_user')">demo_user</span></p>
+          <p><strong>Password:</strong> <span class="credential" onclick="copyToClipboard('user123')">user123</span></p>
+          <small>• Can only view their own prescriptions</small>
+          <button onclick="fillCredentials('demo_user', 'user123')">Use User Login</button>
+        </div>
+      </div>
+      <div class="demo-note">
+        <p><strong>Note:</strong> This is a portfolio demonstration. Feel free to test all features!</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Overlay for demo popup -->
+  <div id="demoOverlay" class="demo-overlay" onclick="closeDemoPopup()"></div>
 
   <script>
+    // Show demo popup when page loads
+    window.onload = function() {
+      showDemoCredentials();
+    };
+
+    function showDemoCredentials() {
+      document.getElementById('demoPopup').style.display = 'block';
+      document.getElementById('demoOverlay').style.display = 'block';
+    }
+
+    function closeDemoPopup() {
+      document.getElementById('demoPopup').style.display = 'none';
+      document.getElementById('demoOverlay').style.display = 'none';
+    }
+
+    function fillCredentials(username, password) {
+      document.getElementById('username').value = username;
+      document.getElementById('password').value = password;
+      closeDemoPopup();
+      
+      // Update role selector based on username
+      if (username === 'admin') {
+        selectRole('admin');
+      } else {
+        selectRole('user');
+      }
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        // Show brief feedback
+        const popup = document.createElement('div');
+        popup.textContent = 'Copied!';
+        popup.style.cssText = 'position:fixed;top:20px;right:20px;background:#4CAF50;color:white;padding:8px 16px;border-radius:4px;z-index:9999;';
+        document.body.appendChild(popup);
+        setTimeout(() => popup.remove(), 2000);
+      });
+    }
+
     function selectRole(role) {
       document.getElementById('userBtn').classList.remove('active');
       document.getElementById('adminBtn').classList.remove('active');
       document.getElementById(role + 'Btn').classList.add('active');
-      document.getElementById('username').value = role;
+      // Don't auto-fill username when selecting role manually
     }
 
     async function login() {
@@ -69,7 +141,7 @@
     }
 
     function showSignup() {
-      window.location.href = 'html/signup.html';
+      window.location.href = '/signup';
     }
   </script>
 </body>

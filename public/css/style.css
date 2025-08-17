@@ -19,6 +19,20 @@ body {
     padding: 1rem;
     margin-bottom: 2rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.user-info {
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
 }
 
 .modal {
@@ -162,6 +176,38 @@ button:hover {
         flex-direction: column;
     }
     .admin-actions button {
+        width: 100%;
+    }
+}
+
+/* User actions (for regular users) */
+.user-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.user-actions button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: auto;
+}
+
+.user-actions button:hover {
+    background: #218838;
+}
+
+@media (max-width: 768px) {
+    .user-actions {
+        flex-direction: column;
+    }
+    .user-actions button {
         width: 100%;
     }
 }

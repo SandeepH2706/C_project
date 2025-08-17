@@ -1,0 +1,32 @@
+# Ignore node modules
+node_modules/
+
+# Ignore local environment files
+.env
+.env.local
+
+# Ignore logs
+*.log
+npm-debug.log*
+
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore compiled C executables (we'll compile them in Docker)
+c-bin/*.exe
+
+# Keep data files but ignore backups
+*.bak
+*.tmp

@@ -25,6 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Helper function to get executable name with proper extension
 function getExecutableName(name) {
+    // Check if .exe version exists first (for cross-platform compatibility)
+    const exePath = path.join(__dirname, 'c-bin', `${name}.exe`);
+    if (fs.existsSync(exePath)) {
+        return `${name}.exe`;
+    }
+    // Otherwise use platform-specific naming
     return os.platform() === 'win32' ? `${name}.exe` : name;
 }
 
@@ -148,6 +154,24 @@ const requireAdmin = (req, res, next) => {
     }
     next();
 };
+
+// Logout endpoint
+app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Could not log out' });
+        }
+        res.json({ success: true, message: 'Logged out successfully' });
+    });
+});
+
+// Get current user info endpoint
+app.get('/user-info', requireAuth, (req, res) => {
+    res.json({
+        username: req.session.user,
+        isAdmin: req.session.isAdmin || false
+    });
+});
 
 // Protected page routes
 app.get('/add', requireAuth, (req, res) => {

@@ -1,75 +1,17 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Prescription System</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="header">
-        <h1>Smart Prescription System</h1>
-    </div>
-
-    <div class="form-container">
-        <form id="prescriptionForm">
-            <div class="grid">
-                <div>
-                    <label>Patient Name</label>
-                    <input type="text" id="patientName" placeholder="Name" required>
-                    <div class="error-message" id="nameError"></div>
-                </div>
-            </div>
-
-            <div id="medicineContainer">
-                <div class="medicine-entry">
-                    <h3>Medicine 1</h3>
-                    <div class="grid">
-                        <div>
-                            <input type="text" placeholder="Medicine Name" required class="medName">
-                        </div>
-                        <div>
-                            <input type="text" placeholder="Dosage (e.g., 500mg)" required class="dosage">
-                        </div>
-                        <div>
-                            <input type="text" placeholder="Schedule (e.g., 3x daily)" required class="schedule">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button type="button" onclick="addMedicineField()">Add Medicine</button>
-                <button type="submit">Save Prescription</button>
-            </div>
-        </form>
-    </div>
-
-    <!-- Success Modal -->
-    <!-- <div class="modal-overlay" id="modalOverlay"></div>
-    <div class="modal" id="prescriptionModal">
-        <div class="modal-header">
-            <h2>✅ Prescription Added Successfully!</h2>
-            <button class="close-btn" onclick="closeModal()">&times;</button>
-        </div>
-        <div class="modal-content" id="modalContent"></div>
-    </div>
-
-    <script src="js/script.js"></script>
-</body>
-</html>  -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Prescription System</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="header">
         <h1>Smart Prescription System</h1>
+        <div class="user-info" id="userInfo" style="display: none;">
+            <span id="welcomeMessage"></span>
+        </div>
     </div>
 
     <div class="form-container">
@@ -105,10 +47,17 @@
             </div>
         </form>
         
-        <!-- NEW: Admin action buttons -->
-        <div class="admin-actions">
-            <button onclick="window.location.href='/view'">View Prescriptions</button>
+        <!-- Admin action buttons (hidden by default, shown for admins) -->
+        <div class="admin-actions" id="adminActions" style="display: none;">
+            <button onclick="window.location.href='/view'">View All Prescriptions</button>
             <button onclick="window.location.href='/delete'">Delete Prescriptions</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+        
+        <!-- Regular user actions -->
+        <div class="user-actions" id="userActions" style="display: none;">
+            <button onclick="window.location.href='/view'">View My Prescriptions</button>
+            <button onclick="logout()">Logout</button>
         </div>
     </div>
 
@@ -122,7 +71,45 @@
         <div class="modal-content" id="modalContent"></div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+        // Check user role when page loads and show appropriate buttons
+        async function checkUserRole() {
+            try {
+                const response = await fetch('/user-info');
+                if (response.ok) {
+                    const userInfo = await response.json();
+                    
+                    // Show user info in header
+                    document.getElementById('userInfo').style.display = 'block';
+                    const role = userInfo.isAdmin ? 'Admin' : 'User';
+                    document.getElementById('welcomeMessage').textContent = 
+                        `Welcome, ${userInfo.username} (${role})`;
+                    
+                    if (userInfo.isAdmin) {
+                        document.getElementById('adminActions').style.display = 'block';
+                        document.getElementById('userActions').style.display = 'none';
+                    } else {
+                        document.getElementById('adminActions').style.display = 'none';
+                        document.getElementById('userActions').style.display = 'block';
+                    }
+                }
+            } catch (error) {
+                console.error('Error checking user role:', error);
+                // If error, redirect to login
+                window.location.href = '/';
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(() => window.location.href = '/')
+                .catch(() => window.location.href = '/');
+        }
+        
+        // Check user role when page loads
+        window.addEventListener('load', checkUserRole);
+    </script>
 </body>
 </html>
-

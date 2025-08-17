@@ -1,0 +1,10 @@
+runtime: nodejs18
+
+# Environment variables
+env_variables:
+  NODE_ENV: production
+
+# Basic scaling
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10

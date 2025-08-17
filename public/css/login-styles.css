@@ -116,3 +116,172 @@ button:hover {
   text-align: center;
   margin-top: 15px;
 }
+
+/* Demo credentials button */
+.demo-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.demo-info button {
+  background: #2196F3;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  width: auto;
+  transition: background 0.3s;
+}
+
+.demo-info button:hover {
+  background: #1976D2;
+}
+
+/* Demo popup overlay */
+.demo-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+/* Demo popup */
+.demo-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.demo-content {
+  padding: 30px;
+  position: relative;
+}
+
+.close-demo {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.close-demo:hover {
+  color: #333;
+}
+
+.demo-content h3 {
+  margin: 0 0 20px 0;
+  text-align: center;
+  color: #333;
+  font-size: 20px;
+}
+
+.demo-accounts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.demo-account {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.demo-account h4 {
+  margin: 0 0 10px 0;
+  color: #2196F3;
+  font-size: 16px;
+}
+
+.demo-account p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.credential {
+  background: #e3f2fd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.credential:hover {
+  background: #bbdefb;
+}
+
+.demo-account small {
+  color: #666;
+  font-style: italic;
+  display: block;
+  margin-top: 8px;
+}
+
+.demo-account button {
+  background: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.demo-account button:hover {
+  background: #45a049;
+}
+
+.demo-note {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.demo-note p {
+  margin: 0;
+  color: #856404;
+  font-size: 14px;
+}
+
+/* Responsive design for demo popup */
+@media (max-width: 600px) {
+  .demo-popup {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .demo-content {
+    padding: 20px;
+  }
+  
+  .demo-accounts {
+    gap: 15px;
+  }
+}
